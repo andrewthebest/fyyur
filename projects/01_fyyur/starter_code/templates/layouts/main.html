@@ -117,6 +117,20 @@
   <script>window.jQuery || document.write('<script type="text/javascript" src="/static/js/libs/jquery-1.11.1.min.js"><\/script>')</script>
   <script type="text/javascript" src="/static/js/libs/bootstrap-3.1.1.min.js" defer></script>
   <script type="text/javascript" src="/static/js/plugins.js" defer></script>
+  <script>
+    const btn = document.querySelector('.delete-button');
+    btn.onclick = function(e) {
+      e.preventDefault()
+      const venuId = e.target.dataset['id'];
+      console.log(venuId);
+      fetch('/venues/' + venuId, {
+        method: 'DELETE',
+      })
+      .then(function() {
+        location.href = '/'
+      })
+    }
+  </script>
 
 </body>
 </html>
